@@ -18,30 +18,26 @@
     <script>
         var mainApp = angular.module("mainApp", []);
 
-        mainApp.factory('MathService', function() {
-            var factory = {};
 
-            factory.multiply = function(a, b) {
+        mainApp.service('MathService', function() {
+
+            this.multiply = function(a, b) {
                 return a * b
             }
-            return factory;
-        });
-
-        mainApp.service('CalcService', function(MathService) {
             this.square = function(a) {
-                return MathService.multiply(a, a);
+                return this.multiply(a, a);
             }
             this.cubic = function(a) {
-                return MathService.multiply(this.square(a), a);
+                return this.multiply(this.square(a), a);
             }
         });
 
-        mainApp.controller('CalcController', function($scope, CalcService) {
+        mainApp.controller('CalcController', function($scope, MathService) {
             $scope.square = function() {
-                $scope.result = CalcService.square($scope.number);
+                $scope.result = MathService.square($scope.number);
             }
             $scope.cubic = function() {
-                $scope.result = CalcService.cubic($scope.number);
+                $scope.result = MathService.cubic($scope.number);
             }
         });
     </script>

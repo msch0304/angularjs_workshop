@@ -10,9 +10,10 @@
 <body>
     <div ng-app="helloWorldModule">
         <div ng-controller="HelloWorldController">
+            Vorname: <input type="text" ng-model="vorname" required>
             Name: <input type="text" ng-model="name" required>
             <hr>
-            <div>Hello {{name}}!</div>
+            <div>Hello {{vorname}} {{name}}!</div>
         </div>
     </div>
 </body>

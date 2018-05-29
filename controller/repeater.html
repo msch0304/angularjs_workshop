@@ -13,7 +13,7 @@
         <p>List of Countries with locale:</p>
 
         <ol>
-            <li ng-repeat="country in countries">
+            <li ng-repeat="country in countries" ng-if="country.locale.indexOf('en') !== -1">
                 {{ 'Country: ' + country.name + ', Locale: ' + country.locale }}
             </li>
         </ol>
